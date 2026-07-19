@@ -5,12 +5,14 @@ void RaylibEngine::init() const {
   InitWindow(screenWidth, screenHeight, gameName);
 }
 
-void RaylibEngine::draw(char message[]) const {
+void RaylibEngine::beginDrawing() const {
   BeginDrawing();
   ClearBackground(RAYWHITE);
-  DrawText(message, 190, 200, 20, LIGHTGRAY);
-  EndDrawing();
 }
+
+void RaylibEngine::endDrawing() const { EndDrawing(); }
+
+void RaylibEngine::drawTexture() const {}
 
 bool RaylibEngine::shouldClose() const { return WindowShouldClose(); }
 
