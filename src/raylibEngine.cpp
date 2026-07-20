@@ -31,7 +31,9 @@ GameEngine::TextureId RaylibEngine::loadTexture(const char *path) {
   return static_cast<TextureId>(textures.size() - 1);
 }
 
-int RaylibEngine::textureWidth(TextureId id) const { return textures[id].width; }
+int RaylibEngine::textureWidth(TextureId id) const {
+  return textures[id].width;
+}
 
 int RaylibEngine::textureHeight(TextureId id) const {
   return textures[id].height;
