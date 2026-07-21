@@ -7,7 +7,8 @@ void Game::run() {
 
   floorTex = gameEngine.loadTexture("assets/floor.png");
   dinoRunTex = gameEngine.loadTexture("assets/dino-run.png");
-  floorY = gameEngine.screenHeight() - gameEngine.textureHeight(floorTex);
+  floorY = gameEngine.screenHeight() - gameEngine.textureHeight(floorTex) -
+           floorOffset;
 
   while (!gameEngine.shouldClose()) {
     update();

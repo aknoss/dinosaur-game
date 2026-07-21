@@ -4,14 +4,16 @@
 class Game {
   GameEngine &gameEngine;
 
+  static constexpr float scrollSpeed = 200.0f;
+  static constexpr float walkFrameDuration = 0.15f;
+  static constexpr float floorOffset = 10.0f;
+
   GameEngine::TextureId floorTex = 0;
   GameEngine::TextureId dinoRunTex = 0;
   int dinoFrame = 0;
   float scrollX = 0.0f;
   float floorY = 0.0f;
   float walkTimer = 0.0f;
-  static constexpr float scrollSpeed = 200.0f; // pixels per second
-  static constexpr float walkFrameDuration = 0.15f;
 
 public:
   Game(GameEngine &e);
