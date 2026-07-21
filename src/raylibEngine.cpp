@@ -42,3 +42,9 @@ int RaylibEngine::textureHeight(TextureId id) const {
 void RaylibEngine::drawTexture(TextureId id, float x, float y) const {
   DrawTexture(textures[id], static_cast<int>(x), static_cast<int>(y), WHITE);
 }
+
+void RaylibEngine::drawTextureRec(TextureId id, Rect source, float x, float y) const {
+  Rectangle src = {source.x, source.y, source.width, source.height};
+  Vector2 pos = {x, y};
+  DrawTextureRec(textures[id], src, pos, WHITE);
+}

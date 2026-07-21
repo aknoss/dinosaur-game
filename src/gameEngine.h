@@ -6,6 +6,10 @@ public:
 
   using TextureId = int;
 
+  struct Rect {
+    float x, y, width, height;
+  };
+
   // Lifecycle
   virtual void init() const = 0;
   virtual void beginDrawing() const = 0;
@@ -21,4 +25,6 @@ public:
   virtual int textureWidth(TextureId id) const = 0;
   virtual int textureHeight(TextureId id) const = 0;
   virtual void drawTexture(TextureId id, float x, float y) const = 0;
+  virtual void drawTextureRec(TextureId id, Rect source, float x,
+                              float y) const = 0;
 };

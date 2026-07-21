@@ -27,4 +27,6 @@ public:
   int textureWidth(TextureId id) const override;
   int textureHeight(TextureId id) const override;
   void drawTexture(TextureId id, float x, float y) const override;
+  void drawTextureRec(TextureId id, Rect source, float x,
+                      float y) const override;
 };

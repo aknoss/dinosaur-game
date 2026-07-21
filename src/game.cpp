@@ -6,9 +6,7 @@ void Game::run() {
   gameEngine.init();
 
   floorTex = gameEngine.loadTexture("assets/floor.png");
-  dinoLeftRunTex = gameEngine.loadTexture("assets/dino-left-run.png");
-  dinoRightRunTex = gameEngine.loadTexture("assets/dino-right-run.png");
-  actualDinoRunTex = dinoLeftRunTex;
+  dinoRunTex = gameEngine.loadTexture("assets/dino-run.png");
   floorY = gameEngine.screenHeight() - gameEngine.textureHeight(floorTex);
 
   while (!gameEngine.shouldClose()) {
@@ -30,11 +28,9 @@ void Game::update() {
   }
 
   walkTimer += gameEngine.deltaTime();
-  if (walkTimer >= 0.5f) {
-    walkTimer = 0.0f;
-    actualDinoRunTex = dinoLeftRunTex;
-  } else {
-    actualDinoRunTex = dinoRightRunTex;
+  if (walkTimer >= walkFrameDuration) {
+    walkTimer -= walkFrameDuration;
+    dinoFrame = (dinoFrame + 1) % 2;
   }
 }
 
@@ -43,5 +39,6 @@ void Game::draw() {
   for (float x = scrollX; x < gameEngine.screenWidth(); x += width) {
     gameEngine.drawTexture(floorTex, x, floorY);
   }
-  gameEngine.drawTexture(actualDinoRunTex, 100, floorY - 70);
+  gameEngine.drawTextureRec(dinoRunTex, {dinoFrame * 88.0f, 0.0f, 88.0f, 85.0f},
+                            100, floorY - 70);
 }
