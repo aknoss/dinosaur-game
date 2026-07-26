@@ -14,6 +14,7 @@ void Dinosaur::update() {
 }
 
 void Dinosaur::draw() {
-  gameEngine.drawTextureRec(dinoRunTex, {dinoFrame * 88.0f, 0.0f, 88.0f, 85.0f},
-                            100, floorY - 70);
+  gameEngine.drawTextureRec(
+      dinoRunTex, {dinoFrame * kFrameWidth, 0.0f, kFrameWidth, kFrameHeight},
+      kDrawX, floorY - kDrawYOffset);
 }
