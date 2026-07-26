@@ -1,14 +1,17 @@
 #include "game.h"
+#include "entities/dinosaur.h"
 
 Game::Game(GameEngine &e) : gameEngine(e) {}
+
+Game::~Game() { delete dinosaur; }
 
 void Game::run() {
   gameEngine.init();
 
   floorTex = gameEngine.loadTexture("assets/floor.png");
-  dinoRunTex = gameEngine.loadTexture("assets/dino-run.png");
   floorY = gameEngine.screenHeight() - gameEngine.textureHeight(floorTex) -
            floorOffset;
+  dinosaur = new Dinosaur(gameEngine, floorY);
 
   while (!gameEngine.shouldClose()) {
     update();
@@ -28,11 +31,7 @@ void Game::update() {
     scrollX += width;
   }
 
-  walkTimer += gameEngine.deltaTime();
-  if (walkTimer >= walkFrameDuration) {
-    walkTimer -= walkFrameDuration;
-    dinoFrame = (dinoFrame + 1) % 2;
-  }
+  dinosaur->update();
 }
 
 void Game::draw() {
@@ -40,6 +39,6 @@ void Game::draw() {
   for (float x = scrollX; x < gameEngine.screenWidth(); x += width) {
     gameEngine.drawTexture(floorTex, x, floorY);
   }
-  gameEngine.drawTextureRec(dinoRunTex, {dinoFrame * 88.0f, 0.0f, 88.0f, 85.0f},
-                            100, floorY - 70);
+
+  dinosaur->draw();
 }
