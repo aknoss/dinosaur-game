@@ -21,6 +21,9 @@ public:
   void close() const override;
 
   float deltaTime() const override;
+  bool isKeyPressed(Key key) const override;
+  bool isKeyDown(Key key) const override;
+  bool isKeyReleased(Key key) const override;
   int screenWidth() const override;
   int screenHeight() const override;
   TextureId loadTexture(const char *path) override;

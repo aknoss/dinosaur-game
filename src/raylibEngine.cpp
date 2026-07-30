@@ -1,4 +1,5 @@
 #include "raylibEngine.h"
+#include <raylib.h>
 
 void RaylibEngine::init() const {
   InitWindow(kScreenWidth, kScreenHeight, gameName);
@@ -22,6 +23,33 @@ void RaylibEngine::close() const {
 
 float RaylibEngine::deltaTime() const { return GetFrameTime(); }
 
+bool RaylibEngine::isKeyPressed(Key key) const {
+  switch (key) {
+  case Key::Space:
+    return IsKeyPressed(KEY_SPACE);
+  default:
+    return false;
+  }
+}
+
+bool RaylibEngine::isKeyDown(Key key) const {
+  switch (key) {
+  case Key::Space:
+    return IsKeyDown(KEY_SPACE);
+  default:
+    return false;
+  }
+}
+
+bool RaylibEngine::isKeyReleased(Key key) const {
+  switch (key) {
+  case Key::Space:
+    return IsKeyReleased(KEY_SPACE);
+  default:
+    return false;
+  }
+}
+
 int RaylibEngine::screenWidth() const { return kScreenWidth; }
 
 int RaylibEngine::screenHeight() const { return kScreenHeight; }
@@ -43,7 +71,8 @@ void RaylibEngine::drawTexture(TextureId id, float x, float y) const {
   DrawTexture(textures[id], static_cast<int>(x), static_cast<int>(y), WHITE);
 }
 
-void RaylibEngine::drawTextureRec(TextureId id, Rect source, float x, float y) const {
+void RaylibEngine::drawTextureRec(TextureId id, Rect source, float x,
+                                  float y) const {
   Rectangle src = {source.x, source.y, source.width, source.height};
   Vector2 pos = {x, y};
   DrawTextureRec(textures[id], src, pos, WHITE);

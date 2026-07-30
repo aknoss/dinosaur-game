@@ -14,6 +14,11 @@ private:
   int dinoFrame = 0;
   float walkTimer = 0.0f;
 
+  static constexpr float gravity = 1400.0f;
+  static constexpr float jumpForce = -550.0f;
+  static constexpr float holdForce = -2200.0f;
+  static constexpr float maxJumpVelocity = -900.0f;
+  static constexpr float groundY = -2200.0f;
   static constexpr float walkFrameDuration = 0.15f;
   static constexpr float kFrameWidth = 88.0f;
   static constexpr float kFrameHeight = 85.0f;

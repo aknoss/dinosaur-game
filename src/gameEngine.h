@@ -10,6 +10,10 @@ public:
     float x, y, width, height;
   };
 
+  enum class Key {
+    Space,
+  };
+
   // Lifecycle
   virtual void init() const = 0;
   virtual void beginDrawing() const = 0;
@@ -19,6 +23,9 @@ public:
 
   // Platform primitives — the game builds its own logic on top of these
   virtual float deltaTime() const = 0;
+  virtual bool isKeyPressed(Key key) const = 0;
+  virtual bool isKeyDown(Key key) const = 0;
+  virtual bool isKeyReleased(Key key) const = 0;
   virtual int screenWidth() const = 0;
   virtual int screenHeight() const = 0;
   virtual TextureId loadTexture(const char *path) = 0;

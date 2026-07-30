@@ -11,6 +11,9 @@ void Dinosaur::update() {
     walkTimer -= walkFrameDuration;
     dinoFrame = (dinoFrame + 1) % 2;
   }
+
+  if (gameEngine.isKeyPressed(GameEngine::Key::Space)) {
+  }
 }
 
 void Dinosaur::draw() {
